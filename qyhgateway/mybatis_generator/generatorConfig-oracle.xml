@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration >
+<!-- 设置Mysql驱动路径 -->
+<classPathEntry location="./ojdbc14.jar" />
+<!-- 此处指定生成针对MyBatis3的DAO -->
+<context id="shark"  targetRuntime="MyBatis3">
+<!-- jdbc连接信息 -->
+<jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver" connectionURL="jdbc:oracle:thin:@127.0.0.1:1521:orcl" userId="abcd" password="abcd" />
+		<javaModelGenerator targetPackage="com.hxlife.wms.modules.weChatCustomer.dao.mybatis.entity" targetProject="../src"  />
+	<sqlMapGenerator targetPackage="com.hxlife.wms.modules.weChatCustomer.dao.mybatis.sqlMap" targetProject="../src" />
+	<javaClientGenerator targetPackage="com.hxlife.wms.modules.weChatCustomer.dao.mybatis.mapper" targetProject="../src"  type="XMLMAPPER"/>
+<!--  <table tableName="Tbl_Wms_Operator" domainObjectName="TblWmsOperator"></table>-->
+
+<!--<table tableName="tbl_base_Area" domainObjectName="TblBaseArea"></table>-->
+<!--<table tableName="TBL_WMS_OPERATOR" domainObjectName="TblWmsOperator"></table>-->
+<!--<table tableName="tbl_base_webuser" domainObjectName="TblBaseWebUser"></table>-->
+<!--<table tableName="tbl_nb_userpolicy" domainObjectName="TblUserPolicy"></table>-->
+<!--<table tableName="TBL_BASE_WEBUSER_UNBIND" domainObjectName="TblWebUserUnBind"></table>-->
+<!--<table tableName="tbl_user_loginflag" domainObjectName="TblWebUserLoginFlag"></table>-->
+
+<table tableName="tbl_wx_customer" domainObjectName="TblWeChatCustomer"></table>
+<!--<table tableName="tbl_wx_bind" domainObjectName="TblWeChatBind"></table>-->
+</context>
+  
+</generatorConfiguration>

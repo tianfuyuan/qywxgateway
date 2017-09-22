@@ -1,0 +1,125 @@
+input::-webkit-input-placeholder {
+	color: #909090 !important;
+	font-size: 0.6rem !important;
+}
+input::-moz-placeholder {
+	color: #909090 !important;
+	font-size: 0.6rem !important;
+}
+input::-ms-input-placeholder {
+	color: #909090 !important;
+	font-size: 0.6rem !important;
+}
+.enterprise_bg{
+	height: 24.12rem;
+	background: url("../img/bg_enterprise_body.jpg") no-repeat;
+	background-size: 100% 100%;
+}
+.enterprise_logo{
+	width: 5.2rem;
+	margin:2.16rem auto 1.2rem;
+	display: block;
+}
+.enterprise_tips{
+	line-height: 0.6rem;
+	width: 88.4%;
+	margin:0 auto;
+	font-size: 0.48rem;
+	color: #646464;
+	height: auto;
+	overflow: hidden;
+}
+.enterprise_tips span{
+	width: 12%;
+	float: left;
+}
+.enterprise_tips p{
+	width: 88%;
+	float: right;
+}
+.enterprise_tips p strong{
+	margin-top: 0.3rem;
+    display: inline-block;
+    font-weight:normal;
+}
+.enterprise_main{
+	width: 88.4%;
+	margin:0 auto;
+}
+.enterprise_main li{
+    position: relative;
+	line-height:1.6rem;
+	background-color: #fff;
+	border: 1px solid #e1e1e1;
+	border-radius: 1rem;
+	margin-top:0.6rem;
+	box-sizing: border-box;
+}
+.enterprise_main li.code{
+	background: none;
+	border: none;
+}
+.enterprise_main li>p{
+	text-indent: 2.28rem;
+}
+.enterprise_main li.code p{
+	width:67.87%;
+	background-color: #fff;
+	border: 1px solid #e1e1e1;
+	border-radius: 1rem;
+	box-sizing: border-box;
+	display: inline-block;
+}
+.enterprise_main li>p input{
+	font-size: 0.68rem;
+	width: 80%;
+	line-height: 1.6rem;
+}
+.enterprise_main li.code>p input{
+	width: 70%;
+}
+.enterprise_main li i{
+	position: absolute;
+	display: block;
+	width:0.8rem;
+	height: 0.8rem;
+	background:url("../img/icon_enterprise_id.png") no-repeat;
+	background-size: 100% 100%;
+	top: 0.4rem;
+    left: 0.8rem;
+}
+.enterprise_main li:nth-of-type(2) i{
+	background:url("../img/icon_enterprise_name.png") no-repeat;
+	background-size: 100% 100%;
+}
+.enterprise_main li:nth-of-type(3) i{
+	background:url("../img/icon_enterprise_tel.png") no-repeat;
+	background-size: 100% 100%;
+}
+.enterprise_main li:nth-of-type(4) i{
+	background:url("../img/icon_enterprise_code.png") no-repeat;
+	background-size: 100% 100%;
+}
+.enterprise_main li .send{
+	float:right;
+    width: 31.13%;
+	line-height: 1.6rem;
+	color: #909090;
+	font-size: 0.6rem;
+	text-align: center;
+	display: block;
+}
+.enterprise_main li .send.active{
+	color: #007fb9;
+}
+.enterprise_btn{
+	display: block;
+    width: 88.4%;
+    margin:1.2rem auto 0;
+    color: #fff;
+    font-size: 0.68rem;
+    background-color: #00a0e9;
+    line-height: 1.6rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 10px rgba(0,160,233,0.4)
+}

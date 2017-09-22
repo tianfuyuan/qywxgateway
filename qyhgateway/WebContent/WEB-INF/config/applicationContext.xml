@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.1.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd"
+	default-lazy-init="true">
+	<description>Spring主配置文件</description>
+	
+	<!-- 中间件数据源配置 (上生产打开，上面的数据源注释掉)-->
+<!-- 	 <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean"> -->
+<!-- 		<property name="jndiName" value="jdbc_mysql"></property> -->
+<!-- 	</bean> -->
+	<!--  jdbcTemplate 数据库访问-->
+<!-- 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate"> -->
+<!--         <property name="dataSource"> -->
+<!--             <ref bean="dataSource" /> -->
+<!--         </property> -->
+<!--     </bean> -->
+	
+	
+	<!-- 系统配置文件加载 -->
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>WEB-INF/config/datasource.properties</value>
+			</list>
+		</property>
+	</bean>
+	
+	
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+	
+	 <!-- 开启spring事务控制 -->
+	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />
+	<!-- 事务管理器定义 -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	     <property name="dataSource" ref="dataSource" />
+	     <property name="nestedTransactionAllowed" value="true"></property>
+	</bean>
+
+	<!-- springg开发注解 -->
+	<context:annotation-config />
+	<bean id="dataGetWayComponent" class="com.ihxlife.qyhgateway.support.components.DataGetWayComponent" init-method="initDataService" ></bean>
+	<context:component-scan base-package="com.ihxlife.qyhgateway.service.impl"></context:component-scan>
+	<context:component-scan base-package="com.ihxlife.qyhgateway.support.*"></context:component-scan>
+
+	<!-- Mybatis数据库访问 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mapperLocations" value="classpath*:com/ihxlife/qyhgateway/mapper/*.xml" />
+		<property name="typeAliasesPackage" value="com.ihxlife.qyhgateway.mapper" />
+		<property name="plugins">
+			<array>
+				<bean class="com.github.pagehelper.PageHelper">
+					<property name="properties">
+						<value>dialect=mysql</value>
+					</property>
+				</bean>
+			</array>
+		</property>
+	</bean>
+	<!-- Mybatis Mapper接口数据扫描 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.ihxlife.qyhgateway.mapper" />
+	</bean>
+	<bean class="com.ihxlife.qyhgateway.support.spring.SpringUtils"/>
+</beans>

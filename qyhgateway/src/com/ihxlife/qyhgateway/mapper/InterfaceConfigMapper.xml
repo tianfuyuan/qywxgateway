@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ihxlife.qyhgateway.mapper.InterfaceConfigMapper" >
+  <resultMap id="BaseResultMap" type="com.ihxlife.qyhgateway.dto.InterfaceConfig" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="indexUrl" property="indexurl" jdbcType="VARCHAR" />
+    <result column="redirectUrl" property="redirecturl" jdbcType="VARCHAR" />
+    <result column="token_id" property="tokenId" jdbcType="VARCHAR" />
+    <result column="detail" property="detail" jdbcType="VARCHAR" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="updatetime" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="spare1" property="spare1" jdbcType="VARCHAR" />
+    <result column="spare2" property="spare2" jdbcType="VARCHAR" />
+    <result column="spare3" property="spare3" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, indexUrl, redirectUrl, token_id, detail, createtime, updatetime, spare1, spare2, 
+    spare3
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ihxlife.qyhgateway.dto.InterfaceConfigExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from interfaceconfig
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from interfaceconfig
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from interfaceconfig
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.ihxlife.qyhgateway.dto.InterfaceConfigExample" >
+    delete from interfaceconfig
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.ihxlife.qyhgateway.dto.InterfaceConfig" >
+    insert into interfaceconfig (id, indexUrl, redirectUrl, 
+      token_id, detail, createtime, 
+      updatetime, spare1, spare2, 
+      spare3)
+    values (#{id,jdbcType=VARCHAR}, #{indexurl,jdbcType=VARCHAR}, #{redirecturl,jdbcType=VARCHAR}, 
+      #{tokenId,jdbcType=VARCHAR}, #{detail,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{updatetime,jdbcType=TIMESTAMP}, #{spare1,jdbcType=VARCHAR}, #{spare2,jdbcType=VARCHAR}, 
+      #{spare3,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ihxlife.qyhgateway.dto.InterfaceConfig" >
+    insert into interfaceconfig
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="indexurl != null" >
+        indexUrl,
+      </if>
+      <if test="redirecturl != null" >
+        redirectUrl,
+      </if>
+      <if test="tokenId != null" >
+        token_id,
+      </if>
+      <if test="detail != null" >
+        detail,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+      <if test="updatetime != null" >
+        updatetime,
+      </if>
+      <if test="spare1 != null" >
+        spare1,
+      </if>
+      <if test="spare2 != null" >
+        spare2,
+      </if>
+      <if test="spare3 != null" >
+        spare3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="indexurl != null" >
+        #{indexurl,jdbcType=VARCHAR},
+      </if>
+      <if test="redirecturl != null" >
+        #{redirecturl,jdbcType=VARCHAR},
+      </if>
+      <if test="tokenId != null" >
+        #{tokenId,jdbcType=VARCHAR},
+      </if>
+      <if test="detail != null" >
+        #{detail,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="spare1 != null" >
+        #{spare1,jdbcType=VARCHAR},
+      </if>
+      <if test="spare2 != null" >
+        #{spare2,jdbcType=VARCHAR},
+      </if>
+      <if test="spare3 != null" >
+        #{spare3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.ihxlife.qyhgateway.dto.InterfaceConfigExample" resultType="java.lang.Integer" >
+    select count(*) from interfaceconfig
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update interfaceconfig
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.indexurl != null" >
+        indexUrl = #{record.indexurl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.redirecturl != null" >
+        redirectUrl = #{record.redirecturl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tokenId != null" >
+        token_id = #{record.tokenId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.detail != null" >
+        detail = #{record.detail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createtime != null" >
+        createtime = #{record.createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updatetime != null" >
+        updatetime = #{record.updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.spare1 != null" >
+        spare1 = #{record.spare1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.spare2 != null" >
+        spare2 = #{record.spare2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.spare3 != null" >
+        spare3 = #{record.spare3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update interfaceconfig
+    set id = #{record.id,jdbcType=VARCHAR},
+      indexUrl = #{record.indexurl,jdbcType=VARCHAR},
+      redirectUrl = #{record.redirecturl,jdbcType=VARCHAR},
+      token_id = #{record.tokenId,jdbcType=VARCHAR},
+      detail = #{record.detail,jdbcType=VARCHAR},
+      createtime = #{record.createtime,jdbcType=TIMESTAMP},
+      updatetime = #{record.updatetime,jdbcType=TIMESTAMP},
+      spare1 = #{record.spare1,jdbcType=VARCHAR},
+      spare2 = #{record.spare2,jdbcType=VARCHAR},
+      spare3 = #{record.spare3,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ihxlife.qyhgateway.dto.InterfaceConfig" >
+    update interfaceconfig
+    <set >
+      <if test="indexurl != null" >
+        indexUrl = #{indexurl,jdbcType=VARCHAR},
+      </if>
+      <if test="redirecturl != null" >
+        redirectUrl = #{redirecturl,jdbcType=VARCHAR},
+      </if>
+      <if test="tokenId != null" >
+        token_id = #{tokenId,jdbcType=VARCHAR},
+      </if>
+      <if test="detail != null" >
+        detail = #{detail,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="spare1 != null" >
+        spare1 = #{spare1,jdbcType=VARCHAR},
+      </if>
+      <if test="spare2 != null" >
+        spare2 = #{spare2,jdbcType=VARCHAR},
+      </if>
+      <if test="spare3 != null" >
+        spare3 = #{spare3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ihxlife.qyhgateway.dto.InterfaceConfig" >
+    update interfaceconfig
+    set indexUrl = #{indexurl,jdbcType=VARCHAR},
+      redirectUrl = #{redirecturl,jdbcType=VARCHAR},
+      token_id = #{tokenId,jdbcType=VARCHAR},
+      detail = #{detail,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      spare1 = #{spare1,jdbcType=VARCHAR},
+      spare2 = #{spare2,jdbcType=VARCHAR},
+      spare3 = #{spare3,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,6 @@
+@charset "utf-8";
+body{background:#ffffff;text-align: center;}
+.img_png{width:7.2rem;margin:2.02rem auto 0;}
+h2{font-size: 0.8rem;color: #646464; margin:1.78rem 0 4.62rem;}
+.btn_default{position:absolute;left:50%;width:100%; text-align:center;height:1.68rem; border-radius:0.8rem;font-size:0.68rem;color:#fff; background-color: #00a0e9;box-shadow: 0 4px 10px rgba(0,160,233,0.4);}
+.small_btn{width:12.8rem; margin:0 0 6.24rem -6.4rem; }
